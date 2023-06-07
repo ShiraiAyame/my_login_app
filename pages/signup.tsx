@@ -32,15 +32,18 @@ export default function Signup() {
   const currentUser = useUser();
   const [isProcessingSignup, setIsProcessingSignup] = useState(false);
   const router = useRouter();
+
   const signup = async (email: string, password: string) => {
     try {
       setIsProcessingSignup(true);
       await createUserWithEmailAndPassword(auth, email, password);
       setIsProcessingSignup(false);
+      router.push("/"); // サインアップ後にトップページにリダイレクトする
     } catch (e) {
       console.error(e);
     }
   };
+
   const onSubmit: SubmitHandler<Inputs> = ({
     email,
     password,
@@ -84,7 +87,7 @@ export default function Signup() {
               <FormLabel fontWeight="bold">Eメール</FormLabel>
               {errors.email && (
                 <Text color="red.400" mb="8px">
-                  メールアドレスは必須です
+                  Eメールは必須です
                 </Text>
               )}
               <Input
