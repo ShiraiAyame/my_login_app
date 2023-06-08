@@ -38,7 +38,7 @@ export default function Signup() {
       setIsProcessingSignup(true);
       await createUserWithEmailAndPassword(auth, email, password);
       setIsProcessingSignup(false);
-      router.push("/"); // サインアップ後にトップページにリダイレクトする
+      router.push("/home"); // サインアップ後にトップページにリダイレクトする
     } catch (e) {
       console.error(e);
     }
@@ -57,7 +57,7 @@ export default function Signup() {
   };
 
   useEffect(() => {
-    if (currentUser) router.push("/");
+    if (currentUser) router.push("/home");
   }, [currentUser, router]);
 
   return (

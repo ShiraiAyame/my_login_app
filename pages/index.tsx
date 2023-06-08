@@ -11,10 +11,10 @@ function Home() {
   const auth = useAuth(); // useAuthフックを使って認証情報を取得
 
   useEffect(() => {
-    // ログイン済みのユーザーがいる場合は別の画面にリダイレクトする
     const currentUser = auth.currentUser;
+    if (currentUser) router.push("/home");
   }, [auth, router]);
-
+ 
   return <Signup />;
 }
 
